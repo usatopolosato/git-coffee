@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QSpinBox, QLabel, QTableWidge
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem, QAbstractItemView
 from PyQt5.QtGui import QColor
 from PyQt5 import QtCore, QtGui
+from addCoffee import AddCoffee
 
 
 class Coffee(QWidget):
@@ -12,19 +13,32 @@ class Coffee(QWidget):
         super().__init__()
         uic.loadUi('main.ui', self)
 
-        self.load_content('coffee.sqlite')
+        self.flag = 1
+
+        self.changeButton.clicked.connect(self.change)
 
     def load_content(self, db):
         con = sqlite3.connect(db)
         cur = con.cursor()
         query = '''SELECT * FROM data'''
         result = cur.execute(query).fetchall()
+        self.tableWidget.setRowCount(len(result))
         for i, elem in enumerate(result):
-            self.tableWidget.setRowCount(self.tableWidget.rowCount() + 1)
             for j, el in enumerate(elem):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(el)))
         self.tableWidget.resizeColumnsToContents()
-        con.commit()
+        con.close()
+
+    def change(self):
+        self.second_form = AddCoffee(self)
+        self.second_form.show()
+        self.flag = 1
+        self.hide()
+
+    def paintEvent(self, event):
+        if self.flag:
+            self.load_content('coffee.sqlite')
+            self.flag = 0
 
 
 if __name__ == '__main__':
