@@ -6,22 +6,45 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>727</width>
-    <height>345</height>
+    <width>719</width>
+    <height>354</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Капучино</string>
+   <string>Добавляем что-то в бд</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>40</y>
-     <width>711</width>
-     <height>221</height>
+     <y>20</y>
+     <width>721</width>
+     <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Добавляем элемент(если что-то не так, то ничего собственно и не произойдет)</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>70</y>
+     <width>721</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <row>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </row>
    <column>
     <property name="text">
      <string>ID</string>
@@ -58,31 +81,13 @@
     </property>
    </column>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QPushButton" name="saveButton">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>351</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>13</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Информация о кофе из базы данных:</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="changeButton">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>272</y>
-     <width>151</width>
-     <height>41</height>
+     <x>200</x>
+     <y>280</y>
+     <width>301</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
@@ -91,7 +96,25 @@
     </font>
    </property>
    <property name="text">
-    <string>Изменить</string>
+    <string>Добавить</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="message">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>300</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	color: green;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
